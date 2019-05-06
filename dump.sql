@@ -195,7 +195,7 @@ CREATE TABLE `Orders` (
   PRIMARY KEY (`OrderId`),
   KEY `fk_cs` (`StockSymbol`),
   CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`StockSymbol`) REFERENCES `Stock` (`StockSymbol`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -204,7 +204,7 @@ CREATE TABLE `Orders` (
 
 LOCK TABLES `Orders` WRITE;
 /*!40000 ALTER TABLE `Orders` DISABLE KEYS */;
-INSERT INTO `Orders` (`OrderId`, `NumShares`, `PricePerShare`, `DateNTime`, `OrderType`, `PriceType`, `StockSymbol`) VALUES (1,10,20.00,'2019-05-05 18:52:37','Buy','Market','BMI'),(2,10,20.00,'2019-05-05 18:53:15','Buy','MarketOnClose','BMI'),(3,100,20.00,'2019-05-05 19:16:48','Buy','Market','BMI'),(4,50,20.00,'2019-05-05 19:39:32','Buy','Market','GM'),(5,10,15.00,'2019-05-05 19:40:56','Sell','TrailingStop','BMI'),(6,10,15.00,'2019-05-05 19:55:33','Sell','HiddenStop','BMI'),(7,10,15.00,'2019-05-05 19:56:58','Sell','TrailingStop','BMI'),(8,11,15.00,'2019-05-05 20:04:58','Sell','Market','BMI'),(9,3,15.00,'2019-05-05 20:13:17','Sell','MarketOnClose','BMI'),(10,2,20.00,'2019-05-05 20:13:40','Sell','TrailingStop','GM'),(11,4,15.00,'2019-05-05 20:14:00','Sell','HiddenStop','BMI'),(12,10,15.00,'2019-05-05 20:34:31','Sell','TrailingStop','BMI');
+INSERT INTO `Orders` (`OrderId`, `NumShares`, `PricePerShare`, `DateNTime`, `OrderType`, `PriceType`, `StockSymbol`) VALUES (1,10,20.00,'2019-05-05 18:52:37','Buy','Market','BMI'),(2,10,20.00,'2019-05-05 18:53:15','Buy','MarketOnClose','BMI'),(3,100,20.00,'2019-05-05 19:16:48','Buy','Market','BMI'),(4,50,20.00,'2019-05-05 19:39:32','Buy','Market','GM'),(5,10,15.00,'2019-05-05 19:40:56','Sell','TrailingStop','BMI'),(6,10,15.00,'2019-05-05 19:55:33','Sell','HiddenStop','BMI'),(7,10,15.00,'2019-05-05 19:56:58','Sell','TrailingStop','BMI'),(8,11,15.00,'2019-05-05 20:04:58','Sell','Market','BMI'),(9,3,15.00,'2019-05-05 20:13:17','Sell','MarketOnClose','BMI'),(10,2,20.00,'2019-05-05 20:13:40','Sell','TrailingStop','GM'),(11,4,15.00,'2019-05-05 20:14:00','Sell','HiddenStop','BMI'),(12,10,15.00,'2019-05-05 20:34:31','Sell','TrailingStop','BMI'),(13,10,18.00,'2019-05-06 18:38:09','Buy','Market','GM'),(14,10,18.00,'2019-05-06 19:47:54','Sell','Market','GM');
 /*!40000 ALTER TABLE `Orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -258,7 +258,7 @@ CREATE TABLE `Portfolio` (
   KEY `Portfolio_Account__fk` (`AccountId`),
   CONSTRAINT `Portfolio_Account__fk` FOREIGN KEY (`AccountId`) REFERENCES `Account` (`AccountId`),
   CONSTRAINT `portfolio_ibfk_3` FOREIGN KEY (`StockSymbol`) REFERENCES `Stock` (`StockSymbol`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -267,7 +267,7 @@ CREATE TABLE `Portfolio` (
 
 LOCK TABLES `Portfolio` WRITE;
 /*!40000 ALTER TABLE `Portfolio` DISABLE KEYS */;
-INSERT INTO `Portfolio` (`PortfolioId`, `AccountId`, `StockSymbol`, `NumShares`) VALUES (1,1,'BMI',10),(2,1,'BMI',10),(3,1,'BMI',100),(4,1,'GM',50),(5,1,'BMI',-10),(6,1,'BMI',-10),(7,1,'BMI',-10),(8,1,'BMI',-11),(9,1,'BMI',-3),(10,1,'GM',-2),(11,1,'BMI',-4),(12,1,'BMI',-10);
+INSERT INTO `Portfolio` (`PortfolioId`, `AccountId`, `StockSymbol`, `NumShares`) VALUES (1,1,'BMI',10),(2,1,'BMI',10),(3,1,'BMI',100),(4,1,'GM',50),(5,1,'BMI',-10),(6,1,'BMI',-10),(7,1,'BMI',-10),(8,1,'BMI',-11),(9,1,'BMI',-3),(10,1,'GM',-2),(11,1,'BMI',-4),(12,1,'BMI',-10),(13,1,'GM',10),(14,1,'GM',-10);
 /*!40000 ALTER TABLE `Portfolio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -294,7 +294,7 @@ CREATE TABLE `Stock` (
 
 LOCK TABLES `Stock` WRITE;
 /*!40000 ALTER TABLE `Stock` DISABLE KEYS */;
-INSERT INTO `Stock` (`StockSymbol`, `CompanyName`, `Type`, `PricePerShare`, `NumShares`) VALUES ('BMI','BMI Foundation','Computer',15.00,999999958),('GM','GM Company','Automobile',20.00,999999952);
+INSERT INTO `Stock` (`StockSymbol`, `CompanyName`, `Type`, `PricePerShare`, `NumShares`) VALUES ('BMI','BMI Foundation','Computer',20.00,999999958),('GM','GM Company','Automobile',18.00,999999952);
 /*!40000 ALTER TABLE `Stock` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -313,7 +313,7 @@ CREATE TABLE `StockPriceHistory` (
   PRIMARY KEY (`HisId`),
   KEY `StockSymbol` (`StockSymbol`),
   CONSTRAINT `stockpricehistory_ibfk_1` FOREIGN KEY (`StockSymbol`) REFERENCES `Stock` (`StockSymbol`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -322,7 +322,7 @@ CREATE TABLE `StockPriceHistory` (
 
 LOCK TABLES `StockPriceHistory` WRITE;
 /*!40000 ALTER TABLE `StockPriceHistory` DISABLE KEYS */;
-INSERT INTO `StockPriceHistory` (`HisId`, `StockSymbol`, `PricePerShare`, `DateNTime`) VALUES (1,'BMI',15.00,'2019-05-05 19:36:39'),(2,'GM',20.00,'2019-05-05 19:36:51');
+INSERT INTO `StockPriceHistory` (`HisId`, `StockSymbol`, `PricePerShare`, `DateNTime`) VALUES (1,'BMI',15.00,'2019-05-05 19:36:39'),(2,'GM',20.00,'2019-05-05 19:36:51'),(3,'GM',18.00,'2019-05-06 02:43:08'),(4,'BMI',20.00,'2019-05-06 18:33:21');
 /*!40000 ALTER TABLE `StockPriceHistory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -349,7 +349,7 @@ CREATE TABLE `Trade` (
   CONSTRAINT `Trade_Account__fk` FOREIGN KEY (`AccountId`) REFERENCES `Account` (`AccountId`),
   CONSTRAINT `Trade_Employee__fk` FOREIGN KEY (`BrokerId`) REFERENCES `Employee` (`EmpId`),
   CONSTRAINT `trade_ibfk_5` FOREIGN KEY (`StockSymbol`) REFERENCES `Stock` (`StockSymbol`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -358,7 +358,7 @@ CREATE TABLE `Trade` (
 
 LOCK TABLES `Trade` WRITE;
 /*!40000 ALTER TABLE `Trade` DISABLE KEYS */;
-INSERT INTO `Trade` (`TradeId`, `AccountId`, `BrokerId`, `OrderId`, `TransactionId`, `StockSymbol`) VALUES (1,1,NULL,1,1,'BMI'),(2,1,NULL,2,2,'BMI'),(3,1,'111111111',3,3,'BMI'),(4,1,'111111111',4,4,'GM'),(5,1,'111111111',5,5,'BMI'),(6,1,'111111111',6,6,'BMI'),(7,1,'111111111',7,7,'BMI'),(8,1,'111111111',8,8,'BMI'),(9,1,'111111111',9,9,'BMI'),(10,1,'111111111',10,10,'GM'),(11,1,'111111111',11,11,'BMI'),(12,1,'111111111',12,12,'BMI');
+INSERT INTO `Trade` (`TradeId`, `AccountId`, `BrokerId`, `OrderId`, `TransactionId`, `StockSymbol`) VALUES (1,1,NULL,1,1,'BMI'),(2,1,NULL,2,2,'BMI'),(3,1,'111111111',3,3,'BMI'),(4,1,'111111111',4,4,'GM'),(5,1,'111111111',5,5,'BMI'),(6,1,'111111111',6,6,'BMI'),(7,1,'111111111',7,7,'BMI'),(8,1,'111111111',8,8,'BMI'),(9,1,'111111111',9,9,'BMI'),(10,1,'111111111',10,10,'GM'),(11,1,'111111111',11,11,'BMI'),(12,1,'111111111',12,12,'BMI'),(13,1,NULL,13,13,'GM'),(14,1,NULL,14,14,'GM');
 /*!40000 ALTER TABLE `Trade` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -401,7 +401,7 @@ CREATE TABLE `Transaction` (
   `DateNTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `PricePerShare` decimal(15,2) DEFAULT NULL,
   PRIMARY KEY (`TransactionId`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -410,7 +410,7 @@ CREATE TABLE `Transaction` (
 
 LOCK TABLES `Transaction` WRITE;
 /*!40000 ALTER TABLE `Transaction` DISABLE KEYS */;
-INSERT INTO `Transaction` (`TransactionId`, `TransFee`, `DateNTime`, `PricePerShare`) VALUES (1,10.00,'2019-05-05 18:52:37',20.00),(2,10.00,'2019-05-05 18:53:15',20.00),(3,100.00,'2019-05-05 19:16:48',20.00),(4,50.00,'2019-05-05 19:39:32',20.00),(5,7.50,'2019-05-05 19:40:56',15.00),(6,7.50,'2019-05-05 19:55:33',15.00),(7,7.50,'2019-05-05 19:56:58',15.00),(8,8.25,'2019-05-05 20:04:58',15.00),(9,2.25,'2019-05-05 20:13:17',15.00),(10,2.00,'2019-05-05 20:13:40',20.00),(11,3.00,'2019-05-05 20:14:00',15.00),(12,7.50,'2019-05-05 20:34:31',15.00);
+INSERT INTO `Transaction` (`TransactionId`, `TransFee`, `DateNTime`, `PricePerShare`) VALUES (1,10.00,'2019-05-05 18:52:37',20.00),(2,10.00,'2019-05-05 18:53:15',20.00),(3,100.00,'2019-05-05 19:16:48',20.00),(4,50.00,'2019-05-05 19:39:32',20.00),(5,7.50,'2019-05-05 19:40:56',15.00),(6,7.50,'2019-05-05 19:55:33',15.00),(7,7.50,'2019-05-05 19:56:58',15.00),(8,8.25,'2019-05-05 20:04:58',15.00),(9,2.25,'2019-05-05 20:13:17',15.00),(10,2.00,'2019-05-05 20:13:40',20.00),(11,3.00,'2019-05-05 20:14:00',15.00),(12,7.50,'2019-05-05 20:34:31',15.00),(13,9.00,'2019-05-06 18:38:09',18.00),(14,9.00,'2019-05-06 19:47:54',18.00);
 /*!40000 ALTER TABLE `Transaction` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -998,4 +998,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-05 18:29:52
+-- Dump completed on 2019-05-06 19:19:09
