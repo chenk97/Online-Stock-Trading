@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/Jsp/WEB-INF/lib/jstl-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/Jsp/WEB-INF/lib/bootstrap-4.1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/Jsp/WEB-INF/lib/protobuf-java-2.6.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/Jsp/WEB-INF/lib/mysql-connector-java-8.0.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/Jsp/WEB-INF/lib/el-api-2.2.1-b04.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/Jsp/WEB-INF/lib/popper.js-1.14.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/Jsp/WEB-INF/lib/jquery-3.3.1-1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
