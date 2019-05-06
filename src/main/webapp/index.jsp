@@ -51,13 +51,13 @@ h5{
 			%>
 			<form action="login">
 				<div class="form-group">
-					<input type="email" class="form-control" name="username" placeholder="Username">
+					<input type="email" class="form-control" name="username" placeholder="Username" style="width:350px;">
 				</div>
 				<div class="form-group">
-	            	<input type="password" class="form-control" name="password" placeholder="Password">
+	            	<input type="password" class="form-control" name="password" placeholder="Password" style="width:350px;">
 	        	</div>
 				<div class="form-group">
-					<select class="form-control" name="role">
+					<select class="form-control" name="role" style="width:350px;">
                         <option value="customer">Customer</option>
                         <option value="manager">Manager</option>
                         <option value="customerRepresentative">Customer Representative</option>
