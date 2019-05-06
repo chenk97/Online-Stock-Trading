@@ -16,7 +16,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Edit Customer</title>t
+	<title>Edit Customer</title>
 	<link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />	
 	<script src="webjars/jquery/3.3.1-1/jquery.min.js"></script>
 	<script src="webjars/bootstrap/4.1.3/js/bootstrap.min.js"></script>
@@ -37,11 +37,11 @@
 	  </div>
   	  <div class="form-group">
 	    <label for="customerFirstName">First Name</label>
-	    <input type="text" class="form-control" id="customerFirstName" name="customerFirstName" placeholder="First Name" value=${editCustomer.firstName} required>
+	    <input type="text" class="form-control" id="customerFirstName" name="customerFirstName" placeholder="First Name" value="${editCustomer.firstName}" required>
 	  </div>
   	  <div class="form-group">
 	    <label for="customerLastName">last Name</label>
-	    <input type="text" class="form-control" id="customerLastName" name="customerLastName" placeholder="Last Name" value=${editCustomer.lastName} required>
+	    <input type="text" class="form-control" id="customerLastName" name="customerLastName" placeholder="Last Name" value="${editCustomer.lastName}" required>
 	  </div>
    	  <div class="form-group">
 	    <label for="customerAddress">Address</label>
@@ -61,11 +61,11 @@
 	  </div>
    	  <div class="form-group">
 	    <label for="customerTelephone">Telephone</label>
-	    <input type="text" class="form-control" id="customerTelephone" name="customerTelephone" placeholder="Telephone number" value=${editCustomer.telephone} required>
+	    <input type="text" class="form-control" id="customerTelephone" name="customerTelephone" placeholder="Telephone number" value="${editCustomer.telephone}" required>
 	  </div>
    	  <div class="form-group">
-	    <label for="customerSSN">SSN (Customer ID)</label>
-	    <input type="text" class="form-control" id="customerSSN" name="customerSSN" placeholder="XXX-XX-XXXX" value=${editCustomer.ssn} readonly>
+	    <label for="customerSSN">SSN</label>
+	    <input type="text" class="form-control" id="customerSSN" name="customerSSN" placeholder="XXX-XX-XXXX" value="${editCustomer.ssn}" readonly>
 	  </div>
    	  <div class="form-group">
 	    <label for="customerCreditCard">Credit Card Number</label>

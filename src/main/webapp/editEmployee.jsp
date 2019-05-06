@@ -55,11 +55,11 @@
 	  </div>
   	  <div class="form-group">
 	    <label for="employeeFirstName">First Name</label>
-	    <input type="text" class="form-control" id="employeeFirstName" name="employeeFirstName" placeholder="First Name" value=${editEmployee.firstName} required>
+	    <input type="text" class="form-control" id="employeeFirstName" name="employeeFirstName" placeholder="First Name" value="${editEmployee.firstName}" required>
 	  </div>
   	  <div class="form-group">
 	    <label for="employeeLastName">last Name</label>
-	    <input type="text" class="form-control" id="employeeLastName" name="employeeLastName" placeholder="Last Name" value=${editEmployee.lastName} required>
+	    <input type="text" class="form-control" id="employeeLastName" name="employeeLastName" placeholder="Last Name" value="${editEmployee.lastName}" required>
 	  </div>
    	  <div class="form-group">
 	    <label for="employeeAddress">Address</label>
