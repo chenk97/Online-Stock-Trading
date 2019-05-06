@@ -15,4 +15,5 @@ Database: jdbc:mysql://mysql4.cs.stonybrook.edu:3306/jiarchen
 
  ## Files
 .war file: `sample.war`  
-data dump: `dump.sql` 
+data dump: `dump.sql`
+<br>.zip file: `CSE-305 PROJ.zip`
