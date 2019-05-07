@@ -14,6 +14,5 @@ Database: jdbc:mysql://mysql4.cs.stonybrook.edu:3306/jiarchen
  <br>`Customer` Email: jiar@gmail.com Password: 123456
 
  ## Files
-.war file: `sample.war`  
+.war file: `jiarchen.war`  
 data dump: `dump.sql`
-<br>.zip file: `CSE-305 PROJ.zip`
