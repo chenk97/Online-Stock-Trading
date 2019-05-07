@@ -151,7 +151,15 @@ public class StockDao {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://mysql4.cs.stonybrook.edu:3306/jiarchen", "jiarchen", "Cjr19971117");
-            String query = "UPDATE Stock SET PricePerShare = ? WHERE StockSymbol=?";
+            String query_0 = "SELECT S.PricePerShare FROM Stock WHERE StockSymbol=?";
+            PreparedStatement ps_0 = con.prepareStatement(query_0);
+            ps_0.setString(1, stockSymbol);
+            ResultSet rs_0 = ps_0.executeQuery();
+            double currentPrice = 0;
+            if(rs_0.next()){
+                currentPrice = rs_0.getDouble("PricePerShare");
+            }
+            String query = "UPDATE Stock SET PricePerShare =? WHERE StockSymbol=?";
             PreparedStatement ps = con.prepareStatement(query);
             ps.setDouble(1, stockPrice);
             ps.setString(2, stockSymbol);
@@ -161,6 +169,9 @@ public class StockDao {
             ps_2.setString(1, stockSymbol);
             ps_2.setDouble(2, stockPrice);
             ps_2.execute();
+            if(currentPrice > stockPrice){ //match
+
+            }
         } catch (ClassNotFoundException e){
             e.printStackTrace();
         }catch (SQLException s){
