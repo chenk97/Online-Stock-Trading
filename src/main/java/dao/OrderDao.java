@@ -862,8 +862,8 @@ public class OrderDao {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://mysql4.cs.stonybrook.edu:3306/jiarchen", "jiarchen", "Cjr19971117");
-            String query = "Select O.PriceType FROM Orders O, ConditionalOrderHistory C " +
-                    "WHERE O.OrderId=C.OrderId AND C.OrderId=?";
+            String query = "Select O.PriceType FROM ConditionalOrderHistory C " +
+                    "WHERE C.CondOrderId=?";
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1, Integer.parseInt(orderId));
             ResultSet rs = ps.executeQuery();
@@ -872,18 +872,16 @@ public class OrderDao {
                 PriceType = rs.getString("PriceType");
                 System.out.println(PriceType);
                 if (PriceType.equals("TrailingStop")) {
-                    System.out.println("test2");
-                    String query_2 = "Select C.OrderId, C.DateNTime, C.StockSymbol,C. PricePerShare, " +
+                    String query_2 = "Select C.CondOrderId, C.DateNTime, C.StockSymbol,C. PricePerShare, " +
                             "( C.PricePerShare - C.PricePerShare * (T. Percentage*0.01)) AS Price\n" +
                             "From ConditionalOrderHistory C,TrailingStop T\n" +
-                            "Where C.OrderId = T. OrderId AND T.OrderId = ?";
+                            "Where C.CondOrderId = T. CondOrderId AND T.OrderId = ?";
                     PreparedStatement ps_2 = con.prepareStatement(query_2);
                     ps_2.setInt(1, Integer.parseInt(orderId));
                     ResultSet rs_2 = ps_2.executeQuery();
                     while (rs_2.next()) {
-                        System.out.println("test");
                         OrderPriceEntry entry = new OrderPriceEntry();
-                        entry.setOrderId(Integer.toString(rs_2.getInt("OrderId")));
+                        entry.setOrderId(Integer.toString(rs_2.getInt("CondOrderId")));
                         entry.setDate(rs_2.getTimestamp("DateNTime"));
                         entry.setStockSymbol(rs_2.getString("StockSymbol"));
                         entry.setPricePerShare(rs_2.getDouble("PricePerShare"));
@@ -891,14 +889,14 @@ public class OrderDao {
                         orderPriceHistory.add(entry);
                     }
                 } else if (PriceType.equals("HiddenStop")) {
-                    String query_2 = "Select C.OrderId, C.StockSymbol, C.PricePerShare, H.StopPrice, C.DateNTime\n" +
+                    String query_2 = "Select C.CondOrderId, C.StockSymbol, C.PricePerShare, H.StopPrice, C.DateNTime\n" +
                             "From ConditionalOrderHistory C, HiddenStop H\n" +
-                            "Where C. OrderId = H. OrderId";
+                            "Where C. CondOrderId = H. CondOrderId";
                     PreparedStatement ps_2 = con.prepareStatement(query_2);
                     ResultSet rs_2 = ps_2.executeQuery();
                     while (rs_2.next()) {
                         OrderPriceEntry entry = new OrderPriceEntry();
-                        entry.setOrderId(Integer.toString(rs_2.getInt("OrderId")));
+                        entry.setOrderId(Integer.toString(rs_2.getInt("CondOrderId")));
                         entry.setDate(rs_2.getTimestamp("DateNTime"));
                         entry.setStockSymbol(rs_2.getString("StockSymbol"));
                         entry.setPricePerShare(rs_2.getDouble("PricePerShare"));
