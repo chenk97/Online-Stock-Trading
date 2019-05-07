@@ -170,10 +170,9 @@ public class StockDao {
             ps_2.setDouble(2, stockPrice);
             ps_2.execute();
             while(currentPrice < stockPrice){ //new price is higher than current price
-                String query_3 = "SELECT * FROM ConditionalOrderHistory WHERE PriceType ='TrailingStop' AND StockSymbol = ?";
+                String query_3 = "SELECT * FROM ConditionalOrderHistory WHERE StockSymbol = ?";
                 PreparedStatement ps_3 = con.prepareStatement(query_3);
                 ps.setString(1, stockSymbol);
-
             }
         } catch (ClassNotFoundException e){
             e.printStackTrace();

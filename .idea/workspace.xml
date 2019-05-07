@@ -76,8 +76,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/dao/OrderDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="607" column="41" selection-start-line="607" selection-start-column="41" selection-end-line="607" selection-end-column="41" />
+            <state relative-caret-position="140">
+              <caret line="616" column="67" selection-start-line="616" selection-start-column="54" selection-end-line="616" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -88,8 +88,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dao/StockDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="305" column="35" selection-start-line="305" selection-start-column="35" selection-end-line="305" selection-end-column="35" />
+            <state relative-caret-position="225">
+              <caret line="175" column="13" lean-forward="true" selection-start-line="175" selection-start-column="13" selection-end-line="175" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -159,7 +159,9 @@
       <find>home</find>
       <find>customerid</find>
       <find>setsto</find>
+      <find>setstock</find>
       <find>submit</find>
+      <find>conditionalor</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -683,7 +685,7 @@
       <workItem from="1557186526268" duration="1684000" />
       <workItem from="1557200877251" duration="655000" />
       <workItem from="1557249262369" duration="68000" />
-      <workItem from="1557253798125" duration="10174000" />
+      <workItem from="1557253798125" duration="11451000" />
     </task>
     <task id="LOCAL-00001" summary="homepage updated&#10;logindao updated">
       <created>1556701006981</created>
@@ -913,7 +915,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="159621000" />
+    <option name="totallyTimeSpent" value="160898000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -1320,18 +1322,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dao/StockDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="305" column="35" selection-start-line="305" selection-start-column="35" selection-end-line="305" selection-end-column="35" />
+        <state relative-caret-position="225">
+          <caret line="175" column="13" lean-forward="true" selection-start-line="175" selection-start-column="13" selection-end-line="175" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/customerRepresentativeHome.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="77" column="48" selection-start-line="77" selection-start-column="48" selection-end-line="77" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -1342,10 +1337,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/customerRepresentativeHome.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="77" column="48" selection-start-line="77" selection-start-column="48" selection-end-line="77" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dao/OrderDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="607" column="41" selection-start-line="607" selection-start-column="41" selection-end-line="607" selection-end-column="41" />
+        <state relative-caret-position="140">
+          <caret line="616" column="67" selection-start-line="616" selection-start-column="54" selection-end-line="616" selection-end-column="67" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
