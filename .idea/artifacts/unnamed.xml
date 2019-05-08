@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="unnamed">
+    <output-path>$PROJECT_DIR$/out/artifacts/unnamed</output-path>
+    <root id="archive" name="unnamed.war">
+      <element id="javaee-facet-resources" facet="Jsp/web/Web" />
+      <element id="javaee-facet-resources" facet="main/web/Web" />
+    </root>
+  </artifact>
+</component>

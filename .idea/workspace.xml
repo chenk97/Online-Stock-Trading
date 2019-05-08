@@ -6,10 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b56e5058-4409-44aa-9029-119dc027a916" name="Default Changelist" comment="conditional orders done and tested">
+    <list default="true" id="b56e5058-4409-44aa-9029-119dc027a916" name="Default Changelist" comment="search order page place holder updated">
       <change afterPath="$PROJECT_DIR$/.idea/artifacts/unnamed.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/viewSearchOrders.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/viewSearchOrders.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -728,7 +727,7 @@
       <workItem from="1557253798125" duration="18312000" />
       <workItem from="1557278852526" duration="6852000" />
       <workItem from="1557285776204" duration="4007000" />
-      <workItem from="1557329909233" duration="740000" />
+      <workItem from="1557329909233" duration="999000" />
     </task>
     <task id="LOCAL-00001" summary="homepage updated&#10;logindao updated">
       <created>1556701006981</created>
@@ -968,11 +967,18 @@
       <option name="project" value="LOCAL" />
       <updated>1557284014383</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="search order page place holder updated">
+      <created>1557330691380</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1557330691380</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="179358000" />
+    <option name="totallyTimeSpent" value="179617000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -1049,7 +1055,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ALL STOCK METHOD DONE EXCEPT ONES TAKE CUSTOMER ID AS PARAMETER" />
     <MESSAGE value="adduser method done" />
     <MESSAGE value="adduser diy method added" />
     <MESSAGE value="some little update" />
@@ -1074,7 +1079,8 @@
     <MESSAGE value="little-little update" />
     <MESSAGE value="setstockprice updated for conditional order history" />
     <MESSAGE value="conditional orders done and tested" />
-    <option name="LAST_COMMIT_MESSAGE" value="conditional orders done and tested" />
+    <MESSAGE value="search order page place holder updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="search order page place holder updated" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
