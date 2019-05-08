@@ -17,3 +17,6 @@ Database: jdbc:mysql://mysql4.cs.stonybrook.edu:3306/jiarchen
 .war file: `sample.war`  
 data dump: `dump.sql`
 <br>.zip file: `CSE-305 PROJ.zip`
+
+ ## Attention
+ for order research page of manager, the customer name input is designed to be full name
