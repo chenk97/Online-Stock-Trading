@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="jiarchen2" />
+      <artifact name="Jsp:war" />
+      <artifact name="Jsp:war exploded" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b56e5058-4409-44aa-9029-119dc027a916" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/dump.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jiarchen.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/META-INF/MANIFEST.MF" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -39,7 +40,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/editEmployee.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1513">
+            <state relative-caret-position="245">
               <caret line="89" column="147" selection-start-line="89" selection-start-column="147" selection-end-line="89" selection-end-column="147" />
             </state>
           </provider>
@@ -66,7 +67,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dao/OrderDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
+            <state relative-caret-position="14994">
               <caret line="892" column="59" selection-start-line="892" selection-start-column="59" selection-end-line="892" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -75,14 +76,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dao/StockDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="283" column="68" lean-forward="true" selection-start-line="283" selection-start-column="68" selection-end-line="283" selection-end-column="68" />
+            <state relative-caret-position="4573">
+              <caret line="276" column="57" selection-start-line="276" selection-start-column="57" selection-end-line="276" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/META-INF/context.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
@@ -227,7 +237,7 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-12" />
     <option name="width" value="1944" />
     <option name="height" value="1044" />
@@ -238,7 +248,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -250,24 +259,6 @@
             <path>
               <item name="CSE-305-PROJ" type="b2602c69:ProjectViewProjectNode" />
               <item name="CSE-305-PROJ" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CSE-305-PROJ" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CSE-305-PROJ" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CSE-305-PROJ" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CSE-305-PROJ" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-              <item name="jiarchen" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CSE-305-PROJ" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CSE-305-PROJ" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -275,21 +266,6 @@
               <item name="CSE-305-PROJ" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CSE-305-PROJ" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CSE-305-PROJ" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CSE-305-PROJ" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CSE-305-PROJ" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CSE-305-PROJ" type="b2602c69:ProjectViewProjectNode" />
@@ -302,6 +278,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -678,7 +655,8 @@
       <workItem from="1557200877251" duration="655000" />
       <workItem from="1557249262369" duration="68000" />
       <workItem from="1557253798125" duration="18312000" />
-      <workItem from="1557278852526" duration="5963000" />
+      <workItem from="1557278852526" duration="6852000" />
+      <workItem from="1557285776204" duration="930000" />
     </task>
     <task id="LOCAL-00001" summary="homepage updated&#10;logindao updated">
       <created>1556701006981</created>
@@ -922,13 +900,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="173722000" />
+    <option name="totallyTimeSpent" value="175541000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23076923" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23481782" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -938,7 +915,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.41385436" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.4920071" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39964476" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1037,13 +1014,6 @@
     </SUITE>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/HiddenStopOrder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1319,24 +1289,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Person.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-          <folding>
-            <element signature="e#1326#1327#0" expanded="true" />
-            <element signature="e#1345#1346#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/editEmployee.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1513">
-          <caret line="89" column="147" selection-start-line="89" selection-start-column="147" selection-end-line="89" selection-end-column="147" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dao/EmployeeDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4624">
@@ -1348,6 +1300,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="67" selection-start-line="6" selection-start-column="67" selection-end-line="6" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/OrderDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14994">
+          <caret line="892" column="59" selection-start-line="892" selection-start-column="59" selection-end-line="892" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/StockDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4573">
+          <caret line="276" column="57" selection-start-line="276" selection-start-column="57" selection-end-line="276" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1375,23 +1347,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/OrderDao.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/editEmployee.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="892" column="59" selection-start-line="892" selection-start-column="59" selection-end-line="892" selection-end-column="59" />
+        <state relative-caret-position="245">
+          <caret line="89" column="147" selection-start-line="89" selection-start-column="147" selection-end-line="89" selection-end-column="147" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Person.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1326#1327#0" expanded="true" />
+            <element signature="e#1345#1346#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/StockDao.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/META-INF/context.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="283" column="68" lean-forward="true" selection-start-line="283" selection-start-column="68" selection-end-line="283" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="34">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
@@ -1400,8 +1377,15 @@
     <states>
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
-          <artifact-editor />
-          <last-edited>unnamed</last-edited>
+          <artifact-editor>
+            <show-content>
+              <type id="library" />
+              <type id="jpa-descriptors" />
+              <type id="javaee-facet-resources" />
+              <type id="artifact" />
+            </show-content>
+          </artifact-editor>
+          <last-edited>jiarchen</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
