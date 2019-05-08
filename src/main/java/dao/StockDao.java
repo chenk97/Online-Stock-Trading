@@ -151,8 +151,9 @@ public class StockDao {
          */
         try{
             Class.forName("com.mysql.jdbc.Driver");
+//            get current price
             Connection con = DriverManager.getConnection("jdbc:mysql://mysql4.cs.stonybrook.edu:3306/jiarchen", "jiarchen", "Cjr19971117");
-            String query_0 = "SELECT S.PricePerShare FROM Stock WHERE StockSymbol=?";
+            String query_0 = "SELECT PricePerShare FROM Stock WHERE StockSymbol=?";
             PreparedStatement ps_0 = con.prepareStatement(query_0);
             ps_0.setString(1, stockSymbol);
             ResultSet rs_0 = ps_0.executeQuery();
@@ -160,6 +161,7 @@ public class StockDao {
             if(rs_0.next()){
                 currentPrice = rs_0.getDouble("PricePerShare");
             }
+//            update price
             String query = "UPDATE Stock SET PricePerShare =? WHERE StockSymbol=?";
             PreparedStatement ps = con.prepareStatement(query);
             ps.setDouble(1, stockPrice);
@@ -170,6 +172,8 @@ public class StockDao {
             ps_2.setString(1, stockSymbol);
             ps_2.setDouble(2, stockPrice);
             ps_2.execute();
+            System.out.println("current price:"+currentPrice);
+//            select all order of the stock
             if(currentPrice < stockPrice){ //new price is rising, sell price of trailing order would rise
                 String query_3 = "SELECT DISTINCT OrderId FROM ConditionalOrderHistory WHERE StockSymbol = ?";
                 PreparedStatement ps_3 = con.prepareStatement(query_3);
@@ -178,150 +182,133 @@ public class StockDao {
                 String query_in="INSERT INTO ConditionalOrderHistory(StockSymbol, PricePerShare, DateNTime, OrderId) values(?,?,default,?)";
                 while(rs_3.next()){
                     int orderId = rs_3.getInt("OrderId");
+                    System.out.println("orderId"+orderId);
                     PreparedStatement ps_in = con.prepareStatement(query_in);
                     ps_in.setString(1, stockSymbol);
                     ps_in.setDouble(2,stockPrice);
                     ps_in.setInt(3,orderId);
+                    ps_in.execute();
                 }
             }else if(currentPrice > stockPrice){
+//                select all order of this stock
                 String query_5 = "SELECT DISTINCT OrderId FROM ConditionalOrderHistory WHERE StockSymbol = ?";
                 PreparedStatement ps_5 = con.prepareStatement(query_5);
                 ps_5.setString(1, stockSymbol);
                 ResultSet rs_5 = ps_5.executeQuery();
                 while(rs_5.next()) {
                     int orderId = rs_5.getInt("OrderId");
+//                    find the latest update
                     String query_4 = "SELECT O.PriceType, O.NumShares FROM Orders O, ConditionalOrderHistory C " +
-                            "WHERE O.OrderId=C.OrderId AND C.OrderId =? ORDER BY DateNTime DESC LIMIT 1";
+                            "WHERE O.OrderId=C.OrderId AND C.OrderId =? ORDER BY C.DateNTime DESC LIMIT 1";
                     PreparedStatement ps_4 = con.prepareStatement(query_4);
-                    ps_4.setString(1, stockSymbol);
+                    ps_4.setInt(1, orderId);
                     ResultSet rs_4 = ps_4.executeQuery();
                     while(rs_4.next()){
                         int numShare = rs_4.getInt("NumShares");
                         String priceType = rs_4.getString("PriceType");
-                        if(priceType.equals("TrailingStop")){
-                            String query_6 = "Select ( C.PricePerShare - C.PricePerShare * (T. Percentage*0.01)) AS Price\n" +
-                                    "From ConditionalOrderHistory C,TrailingStop T\n" +
-                                    "Where C.OrderId = T. OrderId AND T.OrderId = ?";
-                            PreparedStatement ps_6 = con.prepareStatement(query_6);
-                            ps_6.setInt(1, orderId);
-                            ResultSet rs_6 = ps_6.executeQuery();
-                            if(rs_6.next()){
-                                double stopPrice = rs_6.getDouble("Price");
-                                if (stopPrice == stockPrice){
-                                    PreparedStatement ps_trans = con.prepareStatement("SELECT `AUTO_INCREMENT` FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA =? AND TABLE_NAME =?");
-                                    ps_trans.setString(1, "jiarchen");
-                                    ps_trans.setString(2,"Transaction");
-                                    ResultSet rs_transid = ps_trans.executeQuery();
-                                    int transid = 0;
-                                    if(rs_transid.next()){
-                                        transid = rs_transid.getInt(1);
-                                        transid --;
-                                    }
+                        String query_8 = "SELECT AccountId From Trade WHERE OrderId = ?";
+                        PreparedStatement ps_8 = con.prepareStatement(query_8);
+                        ps_8.setInt(1, orderId);
+                        ResultSet rs_8 = ps_8.executeQuery();
+                        int accountid = 0;
+                        if(rs_8.next()){
+                            accountid = rs_8.getInt("AccountId");
+                        }
 
-                                    String query_up = "Update Trade SET TransactionId =? WHERE OrderId = ?";
-                                    PreparedStatement ps_up = con.prepareStatement(query_up);
-                                    ps_up.setInt(1, transid);
-                                    ps_up.setInt(2,orderId);
-                                    ps_up.execute();
-
-                                    String query_1 = "INSERT INTO Transaction(TransFee, DateNTime, PricePerShare) Values(?,default,?)";
-                                    PreparedStatement ps_1 = con.prepareStatement(query_1);
-                                    Double d = stockPrice * numShare;
-                                    d = d * 0.05;
-                                    ps_1.setDouble(1, d);
-                                    ps_1.setDouble(2, stockPrice);
-                                    ps_1.execute();
-
-                                    String query_8 = "SELECT AccountId From Trade WHERE OrderId = ?";
-                                    PreparedStatement ps_8 = con.prepareStatement(query_8);
-                                    ps_8.setInt(1, orderId);
-                                    ResultSet rs_8 = ps_8.executeQuery();
-                                    int accountid = 0;
-                                    if(rs_8.next()){
-                                        accountid = rs_8.getInt("AccountId");
+                        String q = "Select sum(NumShares) from Portfolio P WHERE P.AccountId = ? AND StockSymbol= ?";
+                        PreparedStatement ps_sum = con.prepareStatement(q);
+                        ps_sum.setInt(1, accountid);
+                        ps_sum.setString(2, stockSymbol);
+                        ResultSet rs_nums = ps_sum.executeQuery();
+                        int sum = 0;
+                        if(rs_nums.next()){
+                            sum = rs_nums.getInt(1);
+                        }
+                        if(sum < numShare){
+                            return "failure";
+                        }else {
+                            if (priceType.equals("TrailingStop")) {
+//                            calculate the stop price
+                                String query_6 = "Select ( C.PricePerShare - C.PricePerShare * (T. Percentage*0.01)) AS Price\n" +
+                                        "From ConditionalOrderHistory C,TrailingStop T\n" +
+                                        "Where C.OrderId = T. OrderId AND T.OrderId = ? ORDER BY C.DateNTime DESC LIMIT 1";
+                                PreparedStatement ps_6 = con.prepareStatement(query_6);
+                                ps_6.setInt(1, orderId);
+                                ResultSet rs_6 = ps_6.executeQuery();
+                                if (rs_6.next()) {
+                                    double stopPrice = rs_6.getDouble("Price");
+//                                if the stopPrice matches the new price, sell the stock
+                                    if (stockPrice<=stopPrice) {
+                                        PreparedStatement ps_trans = con.prepareStatement("SELECT `AUTO_INCREMENT` FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA =? AND TABLE_NAME =?");
+                                        ps_trans.setString(1, "jiarchen");
+                                        ps_trans.setString(2, "Transaction");
+                                        ResultSet rs_transid = ps_trans.executeQuery();
+                                        int transid = 0;
+                                        if (rs_transid.next()) {
+                                            transid = rs_transid.getInt(1);
+                                        }
+//                                    update the transaction id to trade table
+                                        String query_up = "Update Trade SET TransactionId =? WHERE OrderId = ?";
+                                        PreparedStatement ps_up = con.prepareStatement(query_up);
+                                        ps_up.setInt(1, transid);
+                                        ps_up.setInt(2, orderId);
+                                        ps_up.execute();
+//                                    calculate transfee and insert transaction
+                                        String query_1 = "INSERT INTO Transaction(TransFee, DateNTime, PricePerShare) Values(?,default,?)";
+                                        PreparedStatement ps_1 = con.prepareStatement(query_1);
+                                        Double transfee = stockPrice * numShare;
+                                        transfee = transfee * 0.05;
+                                        ps_1.setDouble(1, transfee);
+                                        ps_1.setDouble(2, stockPrice);
+                                        ps_1.execute();
+//
+                                        String query_3 = "INSERT INTO Portfolio(AccountId, StockSymbol, NumShares) Values(?,?,?)";
+                                        PreparedStatement ps_3 = con.prepareStatement(query_3);
+                                        ps_3.setInt(1, accountid);
+                                        ps_3.setString(2, stockSymbol);
+                                        ps_3.setInt(3, -numShare);
+                                        ps_3.execute();
                                     }
-
-                                    String q = "Select sum(NumShares) from Portfolio P WHERE P.AccountId = ? AND StockSymbol= ?";
-                                    PreparedStatement ps_sum = con.prepareStatement(q);
-                                    ps_sum.setInt(1, accountid);
-                                    ps_sum.setString(2, stockSymbol);
-                                    ResultSet rs_nums = ps.executeQuery();
-                                    int sum = 0;
-                                    if(rs_nums.next()){
-                                        sum = rs_nums.getInt(1);
-                                    }
-                                    if(sum < numShare){
-                                        return "failure";
-                                    }
-                                    String query_3 = "INSERT INTO Portfolio(AccountId, StockSymbol, NumShares) Values(?,?,?)";
-                                    PreparedStatement ps_3 = con.prepareStatement(query_3);
-                                    ps_3.setInt(1, accountid);
-                                    ps_3.setString(2, stockSymbol);
-                                    ps_3.setInt(3, -numShare);
-                                    ps_3.execute();
                                 }
-                            }
-                        }else if(priceType.equals("HiddenStop")){
-                            String query_6 = "Select H.StopPrice From ConditionalOrderHistory C, HiddenStop H Where C. OrderId = H. OrderId";
-                            PreparedStatement ps_6 = con.prepareStatement(query_6);
-                            ps_6.setInt(1, orderId);
-                            ResultSet rs_6 = ps_6.executeQuery();
-                            if(rs_6.next()){
-                                double stopPrice = rs_6.getDouble("StopPrice");
+                            } else if (priceType.equals("HiddenStop")) {
+                                String query_6 = "Select H.StopPrice From ConditionalOrderHistory C, HiddenStop H Where C. OrderId = H. OrderId And H.OrderId = ?";
+                                PreparedStatement ps_6 = con.prepareStatement(query_6);
+                                ps_6.setInt(1, orderId);
+                                ResultSet rs_6 = ps_6.executeQuery();
+                                if (rs_6.next()) {
+                                    double stopPrice = rs_6.getDouble("StopPrice");
+                                    if (stockPrice<=stopPrice) {
+                                        PreparedStatement ps_trans = con.prepareStatement("SELECT `AUTO_INCREMENT` FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA =? AND TABLE_NAME =?");
+                                        ps_trans.setString(1, "jiarchen");
+                                        ps_trans.setString(2, "Transaction");
+                                        ResultSet rs_transid = ps_trans.executeQuery();
 
-                                if (stopPrice == stockPrice){
-                                    PreparedStatement ps_trans = con.prepareStatement("SELECT `AUTO_INCREMENT` FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA =? AND TABLE_NAME =?");
-                                    ps_trans.setString(1, "jiarchen");
-                                    ps_trans.setString(2,"Transaction");
-                                    ResultSet rs_transid = ps_trans.executeQuery();
+                                        int transid = 0;
+                                        if (rs_transid.next()) {
+                                            transid = rs_transid.getInt(1);
+                                        }
 
-                                    int transid = 0;
-                                    if(rs_transid.next()){
-                                        transid = rs_transid.getInt(1);
-                                        transid --;
+                                        String query_up = "Update Trade SET TransactionId =? WHERE OrderId = ?";
+                                        PreparedStatement ps_up = con.prepareStatement(query_up);
+                                        ps_up.setInt(1, transid);
+                                        ps_up.setInt(2, orderId);
+                                        ps_up.execute();
+
+                                        String query_1 = "INSERT INTO Transaction(TransFee, DateNTime, PricePerShare) Values(?,default,?)";
+                                        PreparedStatement ps_1 = con.prepareStatement(query_1);
+                                        Double transfee = stockPrice * numShare;
+                                        transfee = transfee * 0.05;
+                                        ps_1.setDouble(1, transfee);
+                                        ps_1.setDouble(2, stockPrice);
+                                        ps_1.execute();
+
+                                        String query_3 = "INSERT INTO Portfolio(AccountId, StockSymbol, NumShares) Values(?,?,?)";
+                                        PreparedStatement ps_3 = con.prepareStatement(query_3);
+                                        ps_3.setInt(1, accountid);
+                                        ps_3.setString(2, stockSymbol);
+                                        ps_3.setInt(3, -numShare);
+                                        ps_3.execute();
                                     }
-
-                                    String query_up = "Update Trade SET TransactionId =? WHERE OrderId = ?";
-                                    PreparedStatement ps_up = con.prepareStatement(query_up);
-                                    ps_up.setInt(1, transid);
-                                    ps_up.setInt(2,orderId);
-                                    ps_up.execute();
-
-                                    String query_1 = "INSERT INTO Transaction(TransFee, DateNTime, PricePerShare) Values(?,default,?)";
-                                    PreparedStatement ps_1 = con.prepareStatement(query_1);
-                                    Double d = stockPrice * numShare;
-                                    d = d * 0.05;
-                                    ps_1.setDouble(1, d);
-                                    ps_1.setDouble(2, stockPrice);
-                                    ps_1.execute();
-
-                                    String query_8 = "SELECT AccountId From Trade WHERE OrderId = ?";
-                                    PreparedStatement ps_8 = con.prepareStatement(query_8);
-                                    ps_8.setInt(1, orderId);
-                                    ResultSet rs_8 = ps_8.executeQuery();
-                                    int accountid = 0;
-                                    if(rs_8.next()){
-                                        accountid = rs_8.getInt("AccountId");
-                                    }
-
-                                    String q = "Select sum(NumShares) from Portfolio P WHERE P.AccountId = ? AND StockSymbol= ?";
-                                    PreparedStatement ps_sum = con.prepareStatement(q);
-                                    ps_sum.setInt(1, accountid);
-                                    ps_sum.setString(2, stockSymbol);
-                                    ResultSet rs_nums = ps.executeQuery();
-                                    int sum = 0;
-                                    if(rs_nums.next()){
-                                        sum = rs_nums.getInt(1);
-                                    }
-                                    if(sum < numShare){
-                                        return "failure";
-                                    }
-                                    String query_3 = "INSERT INTO Portfolio(AccountId, StockSymbol, NumShares) Values(?,?,?)";
-                                    PreparedStatement ps_3 = con.prepareStatement(query_3);
-                                    ps_3.setInt(1, accountid);
-                                    ps_3.setString(2, stockSymbol);
-                                    ps_3.setInt(3, -numShare);
-                                    ps_3.execute();
                                 }
                             }
                         }

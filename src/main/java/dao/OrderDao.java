@@ -890,7 +890,7 @@ public class OrderDao {
                         entry.setDate(rs_2.getTimestamp("DateNTime"));
                         entry.setStockSymbol(rs_2.getString("StockSymbol"));
                         entry.setPricePerShare(rs_2.getDouble("PricePerShare"));
-                        entry.setPrice(rs_2.getDouble("Price"));
+                        entry.setPrice(rs_2.getDouble("StopPrice"));
                         orderPriceHistory.add(entry);
                     }
                 }
