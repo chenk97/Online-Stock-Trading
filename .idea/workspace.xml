@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="Jsp:war" />
-      <artifact name="Jsp:war exploded" />
+      <artifact name="jiarchen2" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b56e5058-4409-44aa-9029-119dc027a916" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/OrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/OrderDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/StockDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/StockDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dump.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jiarchen.war" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -80,8 +78,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/dao/StockDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-459">
-              <caret line="199" column="44" lean-forward="true" selection-start-line="199" selection-start-column="44" selection-end-line="199" selection-end-column="44" />
+            <state relative-caret-position="170">
+              <caret line="283" column="68" lean-forward="true" selection-start-line="283" selection-start-column="68" selection-end-line="283" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -310,7 +308,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/META-INF" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/WEB-INF" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -680,7 +678,7 @@
       <workItem from="1557200877251" duration="655000" />
       <workItem from="1557249262369" duration="68000" />
       <workItem from="1557253798125" duration="18312000" />
-      <workItem from="1557278852526" duration="4959000" />
+      <workItem from="1557278852526" duration="5963000" />
     </task>
     <task id="LOCAL-00001" summary="homepage updated&#10;logindao updated">
       <created>1556701006981</created>
@@ -913,11 +911,18 @@
       <option name="project" value="LOCAL" />
       <updated>1557272749955</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="conditional orders done and tested">
+      <created>1557284014380</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1557284014383</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="172718000" />
+    <option name="totallyTimeSpent" value="173722000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -995,7 +1000,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="stock searching customer page done&#10;css updated" />
     <MESSAGE value="ALL STOCK METHOD DONE EXCEPT ONES TAKE CUSTOMER ID AS PARAMETER" />
     <MESSAGE value="adduser method done" />
     <MESSAGE value="adduser diy method added" />
@@ -1020,7 +1024,8 @@
     <MESSAGE value="little update" />
     <MESSAGE value="little-little update" />
     <MESSAGE value="setstockprice updated for conditional order history" />
-    <option name="LAST_COMMIT_MESSAGE" value="setstockprice updated for conditional order history" />
+    <MESSAGE value="conditional orders done and tested" />
+    <option name="LAST_COMMIT_MESSAGE" value="conditional orders done and tested" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1382,8 +1387,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dao/StockDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-459">
-          <caret line="199" column="44" lean-forward="true" selection-start-line="199" selection-start-column="44" selection-end-line="199" selection-end-column="44" />
+        <state relative-caret-position="170">
+          <caret line="283" column="68" lean-forward="true" selection-start-line="283" selection-start-column="68" selection-end-line="283" selection-end-column="68" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1396,7 +1401,7 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>jiarchen</last-edited>
+          <last-edited>unnamed</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
