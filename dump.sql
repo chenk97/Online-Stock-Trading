@@ -86,7 +86,7 @@ CREATE TABLE `ConditionalOrderHistory` (
   PRIMARY KEY (`CondOrderId`),
   KEY `ConditionalOrderHistory___fks` (`StockSymbol`),
   CONSTRAINT `ConditionalOrderHistory___fks` FOREIGN KEY (`StockSymbol`) REFERENCES `Stock` (`StockSymbol`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,7 +95,7 @@ CREATE TABLE `ConditionalOrderHistory` (
 
 LOCK TABLES `ConditionalOrderHistory` WRITE;
 /*!40000 ALTER TABLE `ConditionalOrderHistory` DISABLE KEYS */;
-INSERT INTO `ConditionalOrderHistory` (`CondOrderId`, `StockSymbol`, `PricePerShare`, `DateNTime`, `OrderId`) VALUES (1,'BMI',20.00,'2019-05-08 02:41:43',3),(2,'GM',12.00,'2019-05-08 02:41:58',4),(3,'BMI',30.00,'2019-05-08 02:46:35',3),(4,'BMI',35.00,'2019-05-08 02:47:26',3),(5,'BMI',40.00,'2019-05-08 02:47:42',3);
+INSERT INTO `ConditionalOrderHistory` (`CondOrderId`, `StockSymbol`, `PricePerShare`, `DateNTime`, `OrderId`) VALUES (1,'BMI',20.00,'2019-05-08 02:41:43',3),(2,'GM',12.00,'2019-05-08 02:41:58',4),(3,'BMI',30.00,'2019-05-08 02:46:35',3),(4,'BMI',35.00,'2019-05-08 02:47:26',3),(5,'BMI',40.00,'2019-05-08 02:47:42',3),(6,'BMI',34.00,'2019-05-08 04:24:53',8);
 /*!40000 ALTER TABLE `ConditionalOrderHistory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -196,7 +196,7 @@ CREATE TABLE `Orders` (
   PRIMARY KEY (`OrderId`),
   KEY `fk_cs` (`StockSymbol`),
   CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`StockSymbol`) REFERENCES `Stock` (`StockSymbol`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -205,7 +205,7 @@ CREATE TABLE `Orders` (
 
 LOCK TABLES `Orders` WRITE;
 /*!40000 ALTER TABLE `Orders` DISABLE KEYS */;
-INSERT INTO `Orders` (`OrderId`, `NumShares`, `PricePerShare`, `DateNTime`, `OrderType`, `PriceType`, `StockSymbol`) VALUES (1,100,20.00,'2019-05-08 02:41:00','Buy','Market','BMI'),(2,100,12.00,'2019-05-08 02:41:07','Buy','Market','GM'),(3,20,20.00,'2019-05-08 02:41:43','Sell','TrailingStop','BMI'),(4,20,12.00,'2019-05-08 02:41:58','Sell','HiddenStop','GM'),(5,50,20.00,'2019-05-08 02:43:58','Buy','Market','BMI'),(6,20,12.00,'2019-05-08 02:44:15','Buy','MarketOnClose','GM'),(7,30,20.00,'2019-05-08 02:44:52','Sell','Market','BMI');
+INSERT INTO `Orders` (`OrderId`, `NumShares`, `PricePerShare`, `DateNTime`, `OrderType`, `PriceType`, `StockSymbol`) VALUES (1,100,20.00,'2019-05-08 02:41:00','Buy','Market','BMI'),(2,100,12.00,'2019-05-08 02:41:07','Buy','Market','GM'),(3,20,20.00,'2019-05-08 02:41:43','Sell','TrailingStop','BMI'),(4,20,12.00,'2019-05-08 02:41:58','Sell','HiddenStop','GM'),(5,50,20.00,'2019-05-08 02:43:58','Buy','Market','BMI'),(6,20,12.00,'2019-05-08 02:44:15','Buy','MarketOnClose','GM'),(7,30,20.00,'2019-05-08 02:44:52','Sell','Market','BMI'),(8,10,34.00,'2019-05-08 04:24:53','Sell','TrailingStop','BMI');
 /*!40000 ALTER TABLE `Orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -350,7 +350,7 @@ CREATE TABLE `Trade` (
   CONSTRAINT `Trade_Account__fk` FOREIGN KEY (`AccountId`) REFERENCES `Account` (`AccountId`),
   CONSTRAINT `Trade_Employee__fk` FOREIGN KEY (`BrokerId`) REFERENCES `Employee` (`EmpId`),
   CONSTRAINT `trade_ibfk_5` FOREIGN KEY (`StockSymbol`) REFERENCES `Stock` (`StockSymbol`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -359,7 +359,7 @@ CREATE TABLE `Trade` (
 
 LOCK TABLES `Trade` WRITE;
 /*!40000 ALTER TABLE `Trade` DISABLE KEYS */;
-INSERT INTO `Trade` (`TradeId`, `AccountId`, `BrokerId`, `OrderId`, `TransactionId`, `StockSymbol`) VALUES (1,1,NULL,1,1,'BMI'),(2,1,NULL,2,2,'GM'),(3,1,NULL,3,6,'BMI'),(4,1,NULL,4,7,'GM'),(5,1,'111111111',5,3,'BMI'),(6,1,'111111111',6,4,'GM'),(7,1,'111111111',7,5,'BMI');
+INSERT INTO `Trade` (`TradeId`, `AccountId`, `BrokerId`, `OrderId`, `TransactionId`, `StockSymbol`) VALUES (1,1,NULL,1,1,'BMI'),(2,1,NULL,2,2,'GM'),(3,1,NULL,3,6,'BMI'),(4,1,NULL,4,7,'GM'),(5,1,'111111111',5,3,'BMI'),(6,1,'111111111',6,4,'GM'),(7,1,'111111111',7,5,'BMI'),(8,1,NULL,8,NULL,'BMI');
 /*!40000 ALTER TABLE `Trade` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -377,7 +377,7 @@ CREATE TABLE `TrailingStop` (
   PRIMARY KEY (`StopId`),
   KEY `TrailingStop_Orders__fk` (`OrderId`),
   CONSTRAINT `TrailingStop_Orders__fk` FOREIGN KEY (`OrderId`) REFERENCES `Orders` (`OrderId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -386,7 +386,7 @@ CREATE TABLE `TrailingStop` (
 
 LOCK TABLES `TrailingStop` WRITE;
 /*!40000 ALTER TABLE `TrailingStop` DISABLE KEYS */;
-INSERT INTO `TrailingStop` (`StopId`, `Percentage`, `OrderId`) VALUES (1,15,3);
+INSERT INTO `TrailingStop` (`StopId`, `Percentage`, `OrderId`) VALUES (1,15,3),(2,20,8);
 /*!40000 ALTER TABLE `TrailingStop` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1000,4 +1000,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-07 22:51:59
+-- Dump completed on 2019-05-08 11:46:35
