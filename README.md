@@ -1,6 +1,4 @@
 # On-line Stock Trading
-<br>Author:
-<br>Jiarong Chen  jiarchen@cs.stonybrook.edu
 
 ## Three Users for Test
  `Manager`  Email: chen@g.com Password: 123456
